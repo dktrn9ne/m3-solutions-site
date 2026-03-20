@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M3 Solutions — Second Chance Rental Consulting</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #0D1B2A;
+      --slate:  #1B2E42;
+      --gold:   #C9972C;
+      --gold-lt:#E8B84B;
+      --cream:  #F5F0E8;
+      --white:  #FFFFFF;
+      --gray:   #8A9BB0;
+      --light:  #EEF2F7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--navy);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 5%;
+      background: rgba(13,27,42,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,151,44,0.2);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+    .nav-logo span { color: var(--white); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.25s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy);
+      padding: 0.55rem 1.4rem; border-radius: 4px;
+      font-weight: 700; font-size: 0.85rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.25s;
+    }
+    .nav-cta:hover { background: var(--gold-lt); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 70% 50%, rgba(201,151,44,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,151,44,0.07) 0%, transparent 60%);
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 10rem 5% 5rem 8%;
+      position: relative; z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(201,151,44,0.15);
+      border: 1px solid rgba(201,151,44,0.35);
+      color: var(--gold-lt);
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.4rem 0.9rem; border-radius: 100px;
+      width: fit-content; margin-bottom: 1.8rem;
+      animation: fadeUp 0.8s 0.1s both;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; color: var(--gold); }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.8rem);
+      font-weight: 900; line-height: 1.05;
+      color: var(--white);
+      animation: fadeUp 0.8s 0.25s both;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold);
+      display: block;
+    }
+    .hero-sub {
+      margin-top: 1.4rem;
+      font-size: 1.1rem; font-weight: 300; line-height: 1.7;
+      color: rgba(255,255,255,0.65);
+      max-width: 440px;
+      animation: fadeUp 0.8s 0.4s both;
+    }
+    .hero-actions {
+      margin-top: 2.4rem;
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp 0.8s 0.55s both;
+    }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 0.85rem 2.2rem; border-radius: 4px;
+      font-weight: 700; font-size: 0.95rem;
+      letter-spacing: 0.05em; text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+      padding: 0.85rem 2.2rem; border-radius: 4px;
+      font-weight: 500; font-size: 0.95rem;
+      text-decoration: none; transition: border-color 0.25s, background 0.25s;
+    }
+    .btn-outline:hover { border-color: var(--gold); background: rgba(201,151,44,0.1); }
+
+    .hero-stats {
+      display: flex; gap: 2.5rem; margin-top: 3.5rem;
+      animation: fadeUp 0.8s 0.7s both;
+    }
+    .stat { }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-size: 0.8rem; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-top: 0.2rem;
+    }
+
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative; z-index: 2;
+      padding: 10rem 5% 5rem;
+    }
+    .hero-card-stack {
+      position: relative; width: 340px; height: 420px;
+    }
+    .h-card {
+      position: absolute;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+      padding: 2rem;
+    }
+    .h-card-back {
+      width: 300px; height: 380px;
+      top: 40px; left: 40px;
+      transform: rotate(6deg);
+      background: rgba(201,151,44,0.08);
+      border-color: rgba(201,151,44,0.2);
+      animation: floatB 6s ease-in-out infinite;
+    }
+    .h-card-front {
+      width: 300px; height: 380px;
+      top: 0; left: 0;
+      animation: floatF 6s ease-in-out infinite;
+    }
+    .card-icon {
+      width: 52px; height: 52px;
+      background: rgba(201,151,44,0.2);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 1.4rem;
+    }
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--white);
+      margin-bottom: 0.6rem;
+    }
+    .card-body { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .card-check {
+      margin-top: 1.4rem;
+      display: flex; flex-direction: column; gap: 0.6rem;
+    }
+    .card-check-item {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.85rem; color: rgba(255,255,255,0.7);
+    }
+    .card-check-item::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      background: rgba(201,151,44,0.25);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; flex-shrink: 0;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 5px;
+      background: linear-gradient(90deg, var(--navy), var(--gold), var(--navy));
+    }
+
+    /* ── SECTION BASE ── */
+    section { padding: 6rem 8%; }
+    .section-label {
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 0.7rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700; line-height: 1.15;
+      color: var(--navy);
+    }
+    .section-sub {
+      margin-top: 1rem; font-size: 1rem; font-weight: 300;
+      color: #5a6a7a; line-height: 1.7; max-width: 520px;
+    }
+
+    /* ── PAIN POINTS ── */
+    .pain { background: var(--navy); padding: 5rem 8%; }
+    .pain .section-title { color: var(--white); }
+    .pain .section-sub { color: rgba(255,255,255,0.5); }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .pain-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 2.2rem;
+      position: relative; overflow: hidden;
+      transition: background 0.3s, transform 0.3s;
+    }
+    .pain-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-5px); }
+    .pain-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+    }
+    .pain-icon {
+      font-size: 2.2rem; margin-bottom: 1.2rem;
+    }
+    .pain-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .pain-card .pain-tag {
+      display: inline-block;
+      background: rgba(201,151,44,0.18);
+      color: var(--gold-lt);
+      font-size: 0.72rem; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.25rem 0.75rem; border-radius: 100px;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(201,151,44,0.3);
+    }
+    .pain-card p {
+      font-size: 0.88rem; color: rgba(255,255,255,0.55);
+      line-height: 1.7; margin-bottom: 1.3rem;
+    }
+    .pain-solution {
+      background: rgba(201,151,44,0.1);
+      border: 1px solid rgba(201,151,44,0.25);
+      border-radius: 8px; padding: 1rem 1.1rem;
+    }
+    .pain-solution-label {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: 0.4rem;
+    }
+    .pain-solution p {
+      font-size: 0.84rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 0; line-height: 1.55;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--white); }
+    .how-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      margin-top: 3.5rem;
+      align-items: center;
+    }
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 1.5rem;
+      padding: 1.8rem 0;
+      border-bottom: 1px solid #e8edf2;
+      position: relative;
+    }
+    .step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900;
+      color: rgba(201,151,44,0.15);
+      line-height: 1;
+      min-width: 55px;
+      transition: color 0.3s;
+    }
+    .step:hover .step-num { color: rgba(201,151,44,0.5); }
+    .step-content h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.4rem;
+    }
+    .step-content p { font-size: 0.9rem; color: #6a7a8a; line-height: 1.65; }
+
+    .how-image {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 3rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
+    }
+    .how-image-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; color: var(--white); font-weight: 700;
+    }
+    .how-image-sub { font-size: 0.9rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+    .progress-item { }
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.82rem; color: rgba(255,255,255,0.65);
+      margin-bottom: 0.4rem;
+    }
+    .progress-bar {
+      height: 6px; background: rgba(255,255,255,0.1);
+      border-radius: 100px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      border-radius: 100px;
+      animation: growBar 1.5s ease-out both;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--cream); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 2.2rem;
+      border: 1px solid #e4e9f0;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(13,27,42,0.1); border-color: transparent; }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      font-size: 2rem; margin-bottom: 1.2rem;
+    }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.6rem;
+    }
+    .service-card p { font-size: 0.875rem; color: #6a7a8a; line-height: 1.65; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--navy); }
+    .testimonials .section-title { color: var(--white); }
+    .testimonials .section-sub { color: rgba(255,255,255,0.5); }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+    .testi-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: background 0.3s;
+    }
+    .testi-card:hover { background: rgba(255,255,255,0.09); }
+    .stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
+    .testi-text {
+      font-size: 0.93rem; color: rgba(255,255,255,0.7);
+      line-height: 1.7; font-style: italic;
+      margin-bottom: 1.4rem;
+    }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--slate));
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-weight: 700; font-size: 1rem;
+    }
+    .testi-name { font-weight: 600; font-size: 0.9rem; color: var(--white); }
+    .testi-location { font-size: 0.78rem; color: rgba(255,255,255,0.4); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--gold) 0%, #a07820 100%);
+      padding: 6rem 8%;
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center;
+    }
+    .cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 900; color: var(--navy);
+      max-width: 700px; line-height: 1.1;
+    }
+    .cta-section p {
+      margin-top: 1rem; color: rgba(13,27,42,0.7);
+      font-size: 1.05rem; max-width: 480px; line-height: 1.6;
+    }
+    .cta-form {
+      margin-top: 2.5rem;
+      display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center;
+    }
+    .cta-input {
+      padding: 0.9rem 1.4rem;
+      border-radius: 4px; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 0.95rem;
+      width: 280px;
+      outline: none;
+    }
+    .cta-btn {
+      background: var(--navy); color: var(--white);
+      padding: 0.9rem 2rem; border-radius: 4px; border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.05em; cursor: pointer;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .cta-btn:hover { background: var(--slate); transform: translateY(-2px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #07111C;
+      padding: 3.5rem 8% 2rem;
+    }
+    .footer-top {
+      display: flex; justify-content: space-between;
+      align-items: flex-start; gap: 2rem; flex-wrap: wrap;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .nav-logo { font-size: 1.4rem; }
+    .footer-brand p {
+      margin-top: 0.7rem; font-size: 0.85rem;
+      color: rgba(255,255,255,0.4); max-width: 240px;
+    }
+    .footer-links h4 {
+      font-size: 0.78rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a {
+      font-size: 0.88rem; color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: color 0.25s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      margin-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.8rem; color: rgba(255,255,255,0.3);
+      flex-wrap: wrap; gap: 0.5rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes floatF {
+      0%,100% { transform: translateY(0px); }
+      50%      { transform: translateY(-12px); }
+    }
+    @keyframes floatB {
+      0%,100% { transform: rotate(6deg) translateY(0px); }
+      50%      { transform: rotate(6deg) translateY(-8px); }
+    }
+    @keyframes growBar {
+      from { width: 0; }
+    }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--cream); }
+    .pricing-toggle {
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: 2rem;
+    }
+    .toggle-label { font-size: 0.88rem; font-weight: 500; color: #6a7a8a; }
+    .toggle-label.active { color: var(--navy); font-weight: 700; }
+    .toggle-switch {
+      width: 48px; height: 26px;
+      background: var(--gold); border-radius: 100px;
+      position: relative; cursor: pointer; transition: background 0.3s;
+      border: none; outline: none;
+    }
+    .toggle-switch::after {
+      content: ''; position: absolute;
+      top: 3px; left: 3px;
+      width: 20px; height: 20px;
+      background: var(--white); border-radius: 50%;
+      transition: transform 0.3s;
+    }
+    .toggle-switch.annual::after { transform: translateX(22px); }
+    .save-badge {
+      background: rgba(201,151,44,0.15);
+      border: 1px solid rgba(201,151,44,0.35);
+      color: var(--gold);
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 100px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+      margin-top: 3rem;
+      align-items: start;
+    }
+    .price-card {
+      background: var(--white);
+      border: 1.5px solid #e4e9f0;
+      border-radius: 14px;
+      padding: 2rem 1.6rem;
+      position: relative;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .price-card:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(13,27,42,0.1); }
+    .price-card.featured {
+      background: var(--navy);
+      border-color: var(--gold);
+      transform: scale(1.03);
+    }
+    .price-card.featured:hover { transform: scale(1.03) translateY(-6px); }
+    .featured-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: var(--navy);
+      font-size: 0.7rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.28rem 1rem; border-radius: 100px;
+      white-space: nowrap;
+    }
+    .price-tier {
+      font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 0.4rem;
+    }
+    .price-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--navy); margin-bottom: 0.3rem;
+    }
+    .price-card.featured .price-name { color: var(--white); }
+    .price-tagline {
+      font-size: 0.8rem; color: #8a9bb0; margin-bottom: 1.4rem;
+      line-height: 1.5;
+    }
+    .price-card.featured .price-tagline { color: rgba(255,255,255,0.5); }
+    .price-amount {
+      display: flex; align-items: flex-end; gap: 0.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .price-dollar {
+      font-size: 1.2rem; font-weight: 700; color: var(--navy);
+      line-height: 1; margin-bottom: 0.4rem;
+    }
+    .price-card.featured .price-dollar { color: var(--white); }
+    .price-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem; font-weight: 900; line-height: 1;
+      color: var(--navy);
+    }
+    .price-card.featured .price-num { color: var(--white); }
+    .price-note {
+      font-size: 0.78rem; color: #8a9bb0; margin-bottom: 1.6rem;
+    }
+    .price-card.featured .price-note { color: rgba(255,255,255,0.4); }
+    .price-divider {
+      height: 1px; background: #e4e9f0; margin-bottom: 1.4rem;
+    }
+    .price-card.featured .price-divider { background: rgba(255,255,255,0.1); }
+    .price-features { list-style: none; display: flex; flex-direction: column; gap: 0.65rem; margin-bottom: 1.8rem; }
+    .price-features li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.84rem; color: #4a5a6a; line-height: 1.45;
+    }
+    .price-card.featured .price-features li { color: rgba(255,255,255,0.7); }
+    .price-features li::before {
+      content: '✓';
+      min-width: 18px; height: 18px;
+      background: rgba(201,151,44,0.15);
+      color: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.65rem; font-weight: 700; flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .price-features li.faded { color: #b0bec5; }
+    .price-features li.faded::before { background: #f0f0f0; color: #ccc; }
+    .price-card.featured .price-features li.faded { color: rgba(255,255,255,0.25); }
+    .price-btn {
+      display: block; width: 100%; text-align: center;
+      padding: 0.8rem; border-radius: 6px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      letter-spacing: 0.05em; text-decoration: none;
+      cursor: pointer; border: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .price-btn-outline {
+      background: transparent;
+      border: 1.5px solid #d0d8e4;
+      color: var(--navy);
+    }
+    .price-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .price-btn-gold {
+      background: var(--gold); color: var(--navy);
+    }
+    .price-btn-gold:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .price-btn-navy {
+      background: var(--navy); color: var(--white);
+    }
+    .price-btn-navy:hover { background: var(--slate); }
+
+    /* Add-ons table */
+    .addons { background: var(--white); }
+    .addons-wrap {
+      margin-top: 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+    }
+    .addons-table { width: 100%; border-collapse: collapse; }
+    .addons-table th {
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: #8a9bb0; font-weight: 600;
+      padding: 0 0 0.8rem; text-align: left;
+      border-bottom: 2px solid #e4e9f0;
+    }
+    .addons-table th:last-child { text-align: right; }
+    .addons-table td {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid #f0f4f8;
+      font-size: 0.88rem;
+    }
+    .addons-table td:first-child { color: var(--navy); font-weight: 500; }
+    .addons-table td:last-child {
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1rem;
+      color: var(--gold);
+    }
+    .addons-info {
+      background: var(--navy);
+      border-radius: 14px; padding: 2.5rem;
+      display: flex; flex-direction: column; gap: 1.4rem;
+    }
+    .addons-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; color: var(--white); font-weight: 700;
+    }
+    .addons-info p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+    .addon-highlight {
+      background: rgba(201,151,44,0.12);
+      border: 1px solid rgba(201,151,44,0.25);
+      border-radius: 8px; padding: 1rem 1.2rem;
+    }
+    .addon-highlight-label {
+      font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; margin-bottom: 0.4rem;
+    }
+    .addon-highlight p { font-size: 0.84rem; color: rgba(255,255,255,0.7); margin: 0; }
+    .payment-pills {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem;
+    }
+    .pill {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.65);
+      font-size: 0.78rem; padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .hero-text { padding: 8rem 6% 4rem; }
+      .how-grid { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .price-card.featured { transform: none; }
+      .addons-wrap { grid-template-columns: 1fr; }
+      .pain-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 600px) {
+      section { padding: 4rem 5%; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .services-grid { grid-template-columns: 1fr; }
+      .hero-stats { flex-wrap: wrap; gap: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">M3<span> Solutions</span></div>
+  <ul class="nav-links">
+    <li><a href="#pain-points">Who We Help</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#premium">Premium</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#testimonials">Stories</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Free Consultation</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">Second Chance Rental Consulting</div>
+    <h1>Your Past Doesn't<em>Define Your Home.</em></h1>
+    <p class="hero-sub">Denied an apartment, Airbnb, or even a bank account? M3 Solutions helps you navigate these barriers and get the approvals you deserve — no matter your background.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start Your Journey</a>
+      <a href="#how" class="btn-outline">See How It Works</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Clients Housed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">95%</div>
+        <div class="stat-label">Success Rate</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3yrs</div>
+        <div class="stat-label">Experience</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-card-stack">
+      <div class="h-card h-card-back"></div>
+      <div class="h-card h-card-front">
+        <div class="card-icon">🏡</div>
+        <div class="card-title">Your New Beginning</div>
+        <div class="card-body">We work directly with landlords and property managers who believe in second chances.</div>
+        <div class="card-check">
+          <div class="card-check-item">Apartment leasing denials</div>
+          <div class="card-check-item">Airbnb rental denials</div>
+          <div class="card-check-item">Bank account opening denials</div>
+          <div class="card-check-item">Personalized recovery plan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PAIN POINTS -->
+<section class="pain" id="pain-points">
+  <div class="section-label">We've Been There</div>
+  <h2 class="section-title">Sound Familiar?<br>We Have a Solution.</h2>
+  <p class="section-sub">These are the most common barriers our clients face. M3 Solutions specializes in turning each "denied" into a "welcome home."</p>
+
+  <div class="pain-grid">
+
+    <div class="pain-card">
+      <div class="pain-icon">🏢</div>
+      <div class="pain-tag">Common Pain Point</div>
+      <h3>Apartment Leasing Denial</h3>
+      <p>You found the perfect apartment — then the background or credit check came back and the door slammed shut. It's a devastating cycle that feels impossible to break on your own.</p>
+      <div class="pain-solution">
+        <div class="pain-solution-label">How M3 Helps</div>
+        <p>We build a compelling application package, connect you with second-chance landlords, and advocate directly with property managers to get you approved.</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-icon">🏠</div>
+      <div class="pain-tag">Common Pain Point</div>
+      <h3>Airbnb Rental Denial</h3>
+      <p>Short-term rentals like Airbnb can also reject guests based on background checks or prior account flags — leaving you without options for travel or temporary housing.</p>
+      <div class="pain-solution">
+        <div class="pain-solution-label">How M3 Helps</div>
+        <p>We guide you through the dispute and appeal process, help correct inaccurate records, and identify alternative short-term housing solutions when needed.</p>
+      </div>
+    </div>
+
+    <div class="pain-card">
+      <div class="pain-icon">🏦</div>
+      <div class="pain-tag">Common Pain Point</div>
+      <h3>Bank Account Denial</h3>
+      <p>Without a bank account it's nearly impossible to pay rent, receive a paycheck, or prove financial stability to landlords — creating a barrier that blocks every step forward.</p>
+      <div class="pain-solution">
+        <div class="pain-solution-label">How M3 Helps</div>
+        <p>We help you understand your ChexSystems report, dispute negative entries, and connect you with second-chance banking options so you can rebuild your financial foundation.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section class="how" id="how">
+  <div class="section-label">The Process</div>
+  <h2 class="section-title">Four Steps to<br>Your New Home</h2>
+  <p class="section-sub">We make the path to stable housing clear, supported, and achievable — no matter your background.</p>
+
+  <div class="how-grid">
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-content">
+          <h3>Free Consultation</h3>
+          <p>We start by listening. Share your story and housing challenges with a compassionate consultant who understands the system.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-content">
+          <h3>Build Your Case</h3>
+          <p>We help you build a compelling rental application packet — including a letter of explanation, references, and documentation to present your best self.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-content">
+          <h3>Connect & Move In</h3>
+          <p>We connect you with second-chance landlords and advocate on your behalf through the application and approval process.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-content">
+          <h3>Ongoing Support</h3>
+          <p>Our relationship doesn't end at move-in. We offer resources to help you maintain tenancy and build a strong rental history going forward.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-image">
+      <div class="how-image-title">Your Approval Potential</div>
+      <div class="how-image-sub">With M3 Solutions' guidance, clients see dramatically improved outcomes.</div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Applications Approved</span><span>95%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:95%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Clients with Eviction History</span><span>88%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Credit-Challenged Applicants</span><span>82%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label"><span>Background Screening Cases</span><span>79%</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:79%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-label">What We Offer</div>
+  <h2 class="section-title">Services Built<br>Around You</h2>
+  <p class="section-sub">Comprehensive consulting packages designed to remove the barriers standing between you and stable housing.</p>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">📋</div>
+      <h3>Application Coaching</h3>
+      <p>We guide you through every field of the rental application, helping you present your strengths honestly and compellingly.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">✉️</div>
+      <h3>Letter of Explanation</h3>
+      <p>A professionally crafted narrative that gives context to past challenges and demonstrates your growth and readiness.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🤝</div>
+      <h3>Landlord Advocacy</h3>
+      <p>We speak directly with property managers and landlords on your behalf to open doors that might otherwise stay closed.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏘️</div>
+      <h3>Second-Chance Network</h3>
+      <p>Access our curated network of property owners who specifically work with applicants who have challenging backgrounds.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📈</div>
+      <h3>Credit Improvement Plan</h3>
+      <p>Practical, step-by-step guidance to begin rebuilding your credit score and financial standing over time.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3>Tenancy Success Coaching</h3>
+      <p>After move-in support to help you maintain your lease, build positive landlord relationships, and secure your housing long-term.</p>
+    </div>
+    <div class="service-card" style="border-color: rgba(201,151,44,0.4); background: linear-gradient(135deg, #fffdf7, #fff);">
+      <div class="service-icon">📊</div>
+      <div style="display:inline-block; background:rgba(201,151,44,0.12); border:1px solid rgba(201,151,44,0.3); color:#a07820; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.6rem; border-radius:100px; margin-bottom:0.8rem;">Premium Service</div>
+      <h3>Tradeline Service</h3>
+      <p>We add seasoned, positive tradelines to your credit profile — boosting your score and making you a stronger applicant for rentals, banking, and financing. Results typically visible within 30–45 days.</p>
+    </div>
+    <div class="service-card" style="border-color: rgba(201,151,44,0.4); background: linear-gradient(135deg, #fffdf7, #fff);">
+      <div class="service-icon">🗂️</div>
+      <div style="display:inline-block; background:rgba(201,151,44,0.12); border:1px solid rgba(201,151,44,0.3); color:#a07820; font-size:0.68rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; padding:0.2rem 0.6rem; border-radius:100px; margin-bottom:0.8rem;">Premium Service</div>
+      <h3>Negative Report Removal</h3>
+      <p>Our experts work to identify and challenge inaccurate, outdated, or unverifiable negative items on your credit, rental, and background reports — removing the barriers blocking your approvals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PREMIUM FINANCIAL SERVICES -->
+<section style="background: var(--navy); padding: 6rem 8%;" id="premium">
+  <div class="section-label">Premium Financial Services</div>
+  <h2 class="section-title" style="color:var(--white);">Fix the Numbers.<br>Open Every Door.</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,0.5);">Beyond housing consulting, M3 Solutions offers two powerful financial services that attack the root cause of most denials — your credit and report history.</p>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:3rem;">
+
+    <!-- Tradeline -->
+    <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,151,44,0.35); border-radius:16px; padding:2.5rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:4px; background:linear-gradient(90deg, var(--gold), var(--gold-lt));"></div>
+      <div style="font-size:2.5rem; margin-bottom:1.2rem;">📊</div>
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Premium Service</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; color:var(--white); margin-bottom:0.5rem;">Tradeline Service</h3>
+      <div style="display:flex; align-items:flex-end; gap:0.2rem; margin:1rem 0;">
+        <span style="font-size:1.1rem; color:var(--gold); font-weight:700; margin-bottom:0.4rem;">$</span>
+        <span style="font-family:'Playfair Display',serif; font-size:3.2rem; font-weight:900; color:var(--white); line-height:1;">750</span>
+      </div>
+      <p style="font-size:0.88rem; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:1.5rem;">We add seasoned, authorized-user tradelines from accounts with long positive histories, high limits, and low utilization directly to your credit profile — giving it an immediate, verifiable boost.</p>
+      <div style="display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1.8rem;">
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Score improvement typically visible in 30–45 days
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Strengthens rental, banking & financing applications
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Accounts with 2+ year history, $10K+ limits
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Reports to all 3 major bureaus (Equifax, Experian, TransUnion)
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Can be combined with any M3 consulting package
+        </div>
+      </div>
+      <a href="#contact" style="display:block; width:100%; text-align:center; padding:0.9rem; border-radius:6px; background:var(--gold); color:var(--navy); font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:700; letter-spacing:0.05em; text-decoration:none; transition:background 0.25s;" onmouseover="this.style.background='#E8B84B'" onmouseout="this.style.background='#C9972C'">Get Started — $750</a>
+    </div>
+
+    <!-- Negative Report Removal -->
+    <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(201,151,44,0.35); border-radius:16px; padding:2.5rem; position:relative; overflow:hidden;">
+      <div style="position:absolute; top:0; left:0; width:100%; height:4px; background:linear-gradient(90deg, var(--gold), var(--gold-lt));"></div>
+      <div style="font-size:2.5rem; margin-bottom:1.2rem;">🗂️</div>
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.5rem;">Premium Service</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.7rem; font-weight:700; color:var(--white); margin-bottom:0.5rem;">Negative Report Removal</h3>
+      <div style="display:flex; align-items:flex-end; gap:0.2rem; margin:1rem 0;">
+        <span style="font-size:1.1rem; color:var(--gold); font-weight:700; margin-bottom:0.4rem;">$</span>
+        <span style="font-family:'Playfair Display',serif; font-size:3.2rem; font-weight:900; color:var(--white); line-height:1;">750</span>
+      </div>
+      <p style="font-size:0.88rem; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:1.5rem;">We identify and formally dispute inaccurate, outdated, or unverifiable negative items across your credit, rental history, and background reports — targeting the exact items causing your denials.</p>
+      <div style="display:flex; flex-direction:column; gap:0.7rem; margin-bottom:1.8rem;">
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Credit bureau disputes (all 3 bureaus)
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Rental history report disputes (FICO XD, RentBureau)
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          ChexSystems & banking report disputes
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Background check record challenges
+        </div>
+        <div style="display:flex; align-items:flex-start; gap:0.7rem; font-size:0.85rem; color:rgba(255,255,255,0.7);">
+          <span style="min-width:20px; height:20px; background:rgba(201,151,44,0.2); color:var(--gold); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.65rem; font-weight:700; flex-shrink:0; margin-top:1px;">✓</span>
+          Progress updates every 30 days until resolved
+        </div>
+      </div>
+      <a href="#contact" style="display:block; width:100%; text-align:center; padding:0.9rem; border-radius:6px; background:var(--gold); color:var(--navy); font-family:'DM Sans',sans-serif; font-size:0.9rem; font-weight:700; letter-spacing:0.05em; text-decoration:none; transition:background 0.25s;" onmouseover="this.style.background='#E8B84B'" onmouseout="this.style.background='#C9972C'">Get Started — $750</a>
+    </div>
+
+  </div>
+
+  <!-- Bundle callout -->
+  <div style="margin-top:2rem; background:rgba(201,151,44,0.1); border:1px solid rgba(201,151,44,0.3); border-radius:12px; padding:1.8rem 2rem; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+    <div>
+      <div style="font-size:0.72rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); margin-bottom:0.4rem;">Bundle & Save</div>
+      <div style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--white);">Tradeline + Negative Removal — Both for $1,350</div>
+      <div style="font-size:0.85rem; color:rgba(255,255,255,0.5); margin-top:0.3rem;">Save $150 when you combine both premium financial services</div>
+    </div>
+    <a href="#contact" style="background:var(--gold); color:var(--navy); padding:0.8rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:700; letter-spacing:0.05em; text-decoration:none; white-space:nowrap;">Book Free Consultation</a>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="section-label">Transparent Pricing</div>
+  <h2 class="section-title">Choose Your<br>Path Forward</h2>
+  <p class="section-sub">Every package includes a compassionate, judgment-free consultation. Payment plans available on all tiers — 50% upfront, 50% on placement.</p>
+
+  <div class="pricing-grid">
+
+    <!-- Starter -->
+    <div class="price-card">
+      <div class="price-tier">Starter</div>
+      <div class="price-name">Open Doors</div>
+      <div class="price-tagline">Guidance & resources to get you oriented</div>
+      <div class="price-amount">
+        <span class="price-dollar">$</span>
+        <span class="price-num">149</span>
+      </div>
+      <div class="price-note">One-time · payment plan available</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>30-min intake consultation</li>
+        <li>Credit & background assessment</li>
+        <li>Letter of explanation template</li>
+        <li>Austin second-chance landlord resource list</li>
+        <li>14 days email support</li>
+        <li class="faded">Custom advocacy letter</li>
+        <li class="faded">Direct landlord outreach</li>
+        <li class="faded">ChexSystems dispute help</li>
+      </ul>
+      <button class="price-btn price-btn-outline">Get Started</button>
+    </div>
+
+    <!-- Fresh Start - FEATURED -->
+    <div class="price-card featured">
+      <div class="featured-badge">⭐ Most Popular</div>
+      <div class="price-tier">Core</div>
+      <div class="price-name">Fresh Start</div>
+      <div class="price-tagline">Full application journey, start to approval</div>
+      <div class="price-amount">
+        <span class="price-dollar">$</span>
+        <span class="price-num">349</span>
+      </div>
+      <div class="price-note">One-time · payment plan available</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>60-min strategy consultation</li>
+        <li>Full application review & coaching</li>
+        <li>Custom letter of explanation (written for you)</li>
+        <li>ChexSystems report review</li>
+        <li>Up to 5 landlord network referrals</li>
+        <li>30 days email & text support</li>
+        <li>1 follow-up call after placement</li>
+        <li class="faded">Direct landlord negotiation</li>
+      </ul>
+      <button class="price-btn price-btn-gold">Get Started</button>
+    </div>
+
+    <!-- M3 Advocate -->
+    <div class="price-card">
+      <div class="price-tier">Premium</div>
+      <div class="price-name">M3 Advocate</div>
+      <div class="price-tagline">Hands-on representation for complex cases</div>
+      <div class="price-amount">
+        <span class="price-dollar">$</span>
+        <span class="price-num">599</span>
+      </div>
+      <div class="price-note">One-time · payment plan available</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Everything in Fresh Start</li>
+        <li>Direct landlord outreach & negotiation</li>
+        <li>Airbnb rental dispute assistance</li>
+        <li>Bank account denial dispute letter</li>
+        <li>Unlimited property referrals (60 days)</li>
+        <li>Priority phone support</li>
+        <li>2 follow-up coaching calls</li>
+        <li class="faded">Dedicated assigned consultant</li>
+      </ul>
+      <button class="price-btn price-btn-outline">Get Started</button>
+    </div>
+
+    <!-- White Glove -->
+    <div class="price-card">
+      <div class="price-tier">Concierge</div>
+      <div class="price-name">White Glove</div>
+      <div class="price-tagline">Done-for-you, from denial to move-in day</div>
+      <div class="price-amount">
+        <span class="price-dollar">$</span>
+        <span class="price-num">999</span>
+      </div>
+      <div class="price-note">One-time · payment plan available</div>
+      <div class="price-divider"></div>
+      <ul class="price-features">
+        <li>Everything in M3 Advocate</li>
+        <li>Full application submitted on your behalf</li>
+        <li>Dedicated consultant assigned to your case</li>
+        <li>90 days post move-in tenancy coaching</li>
+        <li>Credit rebuilding roadmap</li>
+        <li>Background dispute filing assistance</li>
+        <li>4-hour guaranteed response time</li>
+        <li>Nonprofit referral rate available</li>
+      </ul>
+      <button class="price-btn price-btn-navy">Get Started</button>
+    </div>
+
+  </div>
+</section>
+
+<!-- ADD-ONS -->
+<section class="addons">
+  <div class="section-label">À La Carte</div>
+  <h2 class="section-title">Add-On Services</h2>
+  <p class="section-sub">Need just one thing? Pick exactly what you need without committing to a full package.</p>
+
+  <div class="addons-wrap">
+    <table class="addons-table">
+      <thead>
+        <tr>
+          <th>Service</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Letter of Explanation (standalone)</td><td>$75</td></tr>
+        <tr><td>ChexSystems Dispute Letter</td><td>$65</td></tr>
+        <tr><td>Background Check Dispute Filing</td><td>$85</td></tr>
+        <tr><td>Landlord Reference Script & Coaching</td><td>$50</td></tr>
+        <tr><td>Credit Action Plan (written report)</td><td>$99</td></tr>
+        <tr><td>30-Day Support Extension</td><td>$79</td></tr>
+        <tr><td>Additional Landlord Referrals (5 more)</td><td>$49</td></tr>
+        <tr><td colspan="2" style="padding:0.6rem 0;"><div style="height:1px; background:linear-gradient(90deg, rgba(201,151,44,0.4), transparent); margin:0.2rem 0;"></div></td></tr>
+        <tr>
+          <td style="color:#0D1B2A; font-weight:700;">📊 Tradeline Service <span style="background:rgba(201,151,44,0.15); color:#a07820; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.15rem 0.5rem; border-radius:100px; margin-left:0.4rem;">Premium</span></td>
+          <td>$750</td>
+        </tr>
+        <tr>
+          <td style="color:#0D1B2A; font-weight:700;">🗂️ Negative Report Removal <span style="background:rgba(201,151,44,0.15); color:#a07820; font-size:0.68rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:0.15rem 0.5rem; border-radius:100px; margin-left:0.4rem;">Premium</span></td>
+          <td>$750</td>
+        </tr>
+        <tr>
+          <td style="color:#0D1B2A; font-weight:700;">⚡ Both Premium Services (Bundle)</td>
+          <td style="color:#C9972C;">$1,350</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="addons-info">
+      <h3>Flexible Ways to Pay</h3>
+      <p>We know finances are tight when you're navigating a housing challenge. That's why we offer multiple ways to make our services accessible.</p>
+      <div class="addon-highlight">
+        <div class="addon-highlight-label">Payment Plan</div>
+        <p>Split any package — 50% upfront, 50% due only when you're approved and placed.</p>
+      </div>
+      <div class="addon-highlight">
+        <div class="addon-highlight-label">Nonprofit / Referral Rate</div>
+        <p>Organizations sending 5+ monthly referrals receive a flat $199 per-client rate. Contact us to set up a referral agreement.</p>
+      </div>
+      <div class="addon-highlight">
+        <div class="addon-highlight-label">Success Fee Option</div>
+        <p>For Premium & Concierge: pay $199 upfront + $250 only upon successful placement. No move-in, no second charge.</p>
+      </div>
+      <p style="font-size:0.8rem; color:rgba(255,255,255,0.35); margin-top:0.5rem;">We accept all major cards, Cash App, Zelle, and PayPal.</p>
+      <div class="payment-pills">
+        <span class="pill">💳 Credit / Debit</span>
+        <span class="pill">💚 Cash App</span>
+        <span class="pill">💙 Zelle</span>
+        <span class="pill">🅿️ PayPal</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label">Client Stories</div>
+  <h2 class="section-title">Real People,<br>Real New Starts</h2>
+  <p class="section-sub">Hear from clients who found stability and a place to call home with M3 Solutions by their side.</p>
+
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"After two evictions I thought I'd never rent again. M3 Solutions not only found me an apartment, they helped me understand what went wrong before so I could do better."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">D</div>
+        <div>
+          <div class="testi-name">Darnell T.</div>
+          <div class="testi-location">Atlanta, GA</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"I was so embarrassed about my background check. The team at M3 helped me write my story in a way that landlords actually understood. I moved in within 3 weeks."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">M</div>
+        <div>
+          <div class="testi-name">Maria R.</div>
+          <div class="testi-location">Houston, TX</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <p class="testi-text">"No judgment, just solutions. That's how I'd describe M3. They treated me with dignity and got me into a place I'm proud to call home. Worth every penny."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">J</div>
+        <div>
+          <div class="testi-name">James W.</div>
+          <div class="testi-location">Charlotte, NC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <h2>Ready to Find Your Next Home?</h2>
+  <p>Book a free, no-obligation consultation and let M3 Solutions show you what's possible.</p>
+  <div class="cta-form">
+    <input class="cta-input" type="email" placeholder="Enter your email address" />
+    <button class="cta-btn">Book Free Consultation</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="nav-logo">M3<span> Solutions</span></div>
+      <p>Second Chance Rental Consulting — helping you find home, no matter your past.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">Application Coaching</a></li>
+        <li><a href="#">Landlord Advocacy</a></li>
+        <li><a href="#">Credit Planning</a></li>
+        <li><a href="#">Second-Chance Network</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Our Process</a></li>
+        <li><a href="#">Client Stories</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#"><span class="__cf_email__" data-cfemail="5f363139301f326c2c30332a2b3630312c713c3032">[email&#160;protected]</span></a></li>
+        <li><a href="#">(555) 000-0000</a></li>
+        <li><a href="#">Book a Call</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 M3 Solutions. All rights reserved.</
