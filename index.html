@@ -1207,240 +1207,236 @@
 
   </style>
 
-  <!-- ── SCHEMA MARKUP ── -->
-  <!-- Block 1: ProfessionalService / LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "@id": "https://mthree.biz/#business",
-    "name": "M3 Solutions",
-    "alternateName": "M3 Solutions Second Chance Rental Consulting",
-    "description": "Second chance rental consulting in Austin, TX. We help clients denied for apartments, Airbnb rentals, and bank accounts due to evictions, bad credit, or background issues.",
-    "url": "https://mthree.biz",
-    "logo": "https://mthree.biz/logo.png",
-    "image": "https://mthree.biz/logo.png",
-    "telephone": "(833)-959-5093",
-    "email": "info@mthree.biz",
-    "priceRange": "$$",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Austin",
-      "addressRegion": "TX",
-      "postalCode": "78701",
-      "addressCountry": "US"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 30.2672,
-      "longitude": -97.7431
-    },
-    "areaServed": [
-      { "@type": "City", "name": "Austin", "sameAs": "https://www.wikidata.org/wiki/Q16559" },
-      { "@type": "City", "name": "Round Rock" },
-      { "@type": "City", "name": "Pflugerville" },
-      { "@type": "City", "name": "Cedar Park" },
-      { "@type": "City", "name": "Leander" },
-      { "@type": "City", "name": "Kyle" },
-      { "@type": "City", "name": "Buda" }
-    ],
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": "Saturday",
-        "opens": "10:00",
-        "closes": "14:00"
-      }
-    ],
-    "sameAs": [
-      "https://www.facebook.com/[YOUR_PAGE]",
-      "https://www.instagram.com/mthree.biz",
-      "https://g.page/15760177067294091669"
-    ],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Second Chance Consulting Services",
-      "itemListElement": [
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Open Doors Package",
-            "description": "Starter rental consulting: assessment, letter template, Austin second-chance landlord list, 14-day email support."
-          },
-          "price": "149.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Fresh Start Package",
-            "description": "Full rental application coaching, custom letter of explanation, ChexSystems review, 5 landlord referrals, 30-day support."
-          },
-          "price": "349.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "M3 Advocate Package",
-            "description": "Direct landlord negotiation, Airbnb denial dispute assistance, bank account denial dispute letter, unlimited referrals 60 days."
-          },
-          "price": "599.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "White Glove Package",
-            "description": "Done-for-you second chance rental consulting with dedicated consultant, 90-day post move-in coaching, 4-hour response guarantee."
-          },
-          "price": "999.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Tradeline Service",
-            "description": "Seasoned authorized-user tradelines added to credit profile. Score improvement visible in 30-45 days. Reports to all 3 bureaus."
-          },
-          "price": "750.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Negative Report Removal",
-            "description": "Dispute and removal of inaccurate items from credit reports, ChexSystems, rental history reports, and background checks."
-          },
-          "price": "750.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Premium Bundle",
-            "description": "Tradeline Service plus Negative Report Removal combined. Score boost plus negative item removal. Save $150."
-          },
-          "price": "1350.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "ChexSystems Dispute Letter",
-            "description": "FCRA-compliant ChexSystems dispute letter professionally drafted and sent to all relevant parties."
-          },
-          "price": "65.00",
-          "priceCurrency": "USD"
-        },
-        {
-          "@type": "Offer",
-          "itemOffered": {
-            "@type": "Service",
-            "name": "Letter of Explanation",
-            "description": "Custom letter of explanation for rental application denials, written for your specific situation and target property."
-          },
-          "price": "75.00",
-          "priceCurrency": "USD"
-        }
-      ]
-    }
-  }
-  </script>
 
-  <!-- Block 2: FAQPage -->
+  <!-- ── SCHEMA MARKUP ── -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "What is second chance rental consulting?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Second chance rental consulting helps people denied for apartments, Airbnb rentals, or bank accounts due to evictions, bad credit, or background issues. Unlike free apartment locators paid by landlords, M3 Solutions works exclusively for the client — disputing inaccurate records, writing letters of explanation, and negotiating directly with property managers in Austin, TX."
+        "@type": "ProfessionalService",
+        "@id": "https://mthree.biz/#business",
+        "name": "M3 Solutions",
+        "alternateName": "M3 Solutions Second Chance Rental Consulting",
+        "description": "Second chance rental consulting in Austin, TX. We help clients denied for apartments, Airbnb rentals, and bank accounts due to evictions, bad credit, or background issues.",
+        "url": "https://mthree.biz",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://mthree.biz/logo.png",
+          "width": 300,
+          "height": 300
+        },
+        "image": "https://mthree.biz/logo.png",
+        "telephone": "+18339595093",
+        "email": "info@mthree.biz",
+        "priceRange": "$$",
+        "currenciesAccepted": "USD",
+        "paymentAccepted": "Credit Card, Debit Card, Cash App, Zelle, PayPal",
+        "foundingDate": "2023",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "5900 Balcones Dr Ste 13695",
+          "addressLocality": "Austin",
+          "addressRegion": "TX",
+          "postalCode": "78731",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 30.3569,
+          "longitude": -97.7503
+        },
+        "serviceArea": {
+          "@type": "GeoCircle",
+          "geoMidpoint": {
+            "@type": "GeoCoordinates",
+            "latitude": 30.3569,
+            "longitude": -97.7503
+          },
+          "geoRadius": "80000"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Austin", "sameAs": "https://www.wikidata.org/wiki/Q16559" },
+          { "@type": "City", "name": "Round Rock" },
+          { "@type": "City", "name": "Pflugerville" },
+          { "@type": "City", "name": "Cedar Park" },
+          { "@type": "City", "name": "Leander" },
+          { "@type": "City", "name": "Kyle" },
+          { "@type": "City", "name": "Buda" }
+        ],
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "09:00",
+            "closes": "18:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "10:00",
+            "closes": "14:00"
+          }
+        ],
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+18339595093",
+            "contactType": "customer service",
+            "email": "info@mthree.biz",
+            "availableLanguage": "English",
+            "contactOption": "TollFree",
+            "areaServed": "US"
+          }
+        ],
+        "knowsAbout": [
+          "Second chance apartment rental",
+          "Eviction record consulting",
+          "ChexSystems dispute",
+          "Credit repair consulting",
+          "Airbnb denial appeals",
+          "Letter of explanation writing",
+          "Tradeline services",
+          "Background check disputes",
+          "Rental application coaching"
+        ],
+        "sameAs": [
+          "https://www.instagram.com/mthree.biz",
+          "https://g.page/15760177067294091669"
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Second Chance Consulting Services",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Open Doors Package", "description": "Starter rental consulting: assessment, letter template, Austin second-chance landlord list, 14-day email support." },
+              "price": "149.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Fresh Start Package", "description": "Full rental application coaching, custom letter of explanation, ChexSystems review, 5 landlord referrals, 30-day support." },
+              "price": "349.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "M3 Advocate Package", "description": "Direct landlord negotiation, Airbnb denial dispute assistance, bank account denial dispute letter, unlimited referrals 60 days." },
+              "price": "599.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "White Glove Package", "description": "Done-for-you second chance rental consulting with dedicated consultant, 90-day post move-in coaching, 4-hour response guarantee." },
+              "price": "999.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Tradeline Service", "description": "Seasoned authorized-user tradelines added to credit profile. Score improvement visible in 30-45 days. Reports to all 3 bureaus." },
+              "price": "750.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Negative Report Removal", "description": "Dispute and removal of inaccurate items from credit reports, ChexSystems, rental history reports, and background checks." },
+              "price": "750.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Premium Bundle", "description": "Tradeline Service plus Negative Report Removal combined. Score boost plus negative item removal. Save $150." },
+              "price": "1350.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "ChexSystems Dispute Letter", "description": "FCRA-compliant ChexSystems dispute letter professionally drafted and sent to all relevant parties." },
+              "price": "65.00", "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": { "@type": "Service", "name": "Letter of Explanation", "description": "Custom letter of explanation for rental application denials, written for your specific situation and target property." },
+              "price": "75.00", "priceCurrency": "USD"
+            }
+          ]
         }
       },
       {
-        "@type": "Question",
-        "name": "Can M3 Solutions help if I have an eviction on my record in Austin TX?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. M3 Solutions specializes in rental applications with eviction history. We write a custom letter of explanation, connect you with second-chance landlords in Austin, and advocate directly with property managers on your behalf. Our success rate for eviction cases is over 88%."
-        }
+        "@type": "FAQPage",
+        "@id": "https://mthree.biz/#faq",
+        "isPartOf": { "@id": "https://mthree.biz/#website" },
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is second chance rental consulting?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Second chance rental consulting helps people denied for apartments, Airbnb rentals, or bank accounts due to evictions, bad credit, or background issues. Unlike free apartment locators paid by landlords, M3 Solutions works exclusively for the client — disputing inaccurate records, writing letters of explanation, and negotiating directly with property managers in Austin, TX."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can M3 Solutions help if I have an eviction on my record in Austin TX?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. M3 Solutions specializes in rental applications with eviction history. We write a custom letter of explanation, connect you with second-chance landlords in Austin, and advocate directly with property managers on your behalf. Our success rate for eviction cases is over 88%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is ChexSystems and how do I dispute it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ChexSystems is a consumer reporting agency used by most banks to screen applicants for checking and savings accounts. A negative entry can cause bank account denials for up to 5 years. M3 Solutions writes FCRA-compliant ChexSystems dispute letters targeting inaccurate or unverifiable entries for $65 standalone or included in the Fresh Start package at $349."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How much does second chance rental consulting cost in Austin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "M3 Solutions offers four consulting packages: Open Doors ($149), Fresh Start ($349), M3 Advocate ($599), and White Glove ($999). Payment plans are available on all packages — 50% upfront, 50% on successful placement. A free 30-minute consultation is included with every package."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can you help if I was denied for an Airbnb in Austin?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Airbnb denial assistance is included in the M3 Advocate ($599) and White Glove ($999) packages. We help identify the cause of the denial, file a formal dispute with the background screening company, and appeal directly to Airbnb's Trust and Safety team on your behalf."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a tradeline and how does it help with rental applications?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A tradeline is a credit account that appears on your credit report. M3 Solutions adds you as an authorized user on seasoned accounts with 2+ year histories and $10,000+ limits. This can boost your credit score in 30-45 days — fast enough to cross the threshold for rental approval. Our Tradeline Service is $750, or $1,350 bundled with Negative Report Removal."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you offer a payment plan?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. All M3 Solutions packages include a payment plan option: 50% upfront and 50% due only upon successful placement. We also accept Credit/Debit cards, Cash App, Zelle, and PayPal."
+            }
+          }
+        ]
       },
       {
-        "@type": "Question",
-        "name": "What is ChexSystems and how do I dispute it?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ChexSystems is a consumer reporting agency used by most banks to screen applicants for checking and savings accounts. A negative entry can cause bank account denials for up to 5 years. M3 Solutions writes FCRA-compliant ChexSystems dispute letters targeting inaccurate or unverifiable entries for $65 standalone or included in the Fresh Start package at $349."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does second chance rental consulting cost in Austin?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "M3 Solutions offers four consulting packages: Open Doors ($149), Fresh Start ($349), M3 Advocate ($599), and White Glove ($999). Payment plans are available on all packages — 50% upfront, 50% on successful placement. A free 30-minute consultation is included with every package."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can you help if I was denied for an Airbnb in Austin?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Airbnb denial assistance is included in the M3 Advocate ($599) and White Glove ($999) packages. We help identify the cause of the denial, file a formal dispute with the background screening company, and appeal directly to Airbnb's Trust and Safety team on your behalf."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is a tradeline and how does it help with rental applications?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A tradeline is a credit account that appears on your credit report. M3 Solutions adds you as an authorized user on seasoned accounts with 2+ year histories and $10,000+ limits. This can boost your credit score in 30-45 days — fast enough to cross the threshold for rental approval. Our Tradeline Service is $750, or $1,350 bundled with Negative Report Removal."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do you offer a payment plan?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. All M3 Solutions packages include a payment plan option: 50% upfront and 50% due only upon successful placement. We also accept Credit/Debit cards, Cash App, Zelle, and PayPal."
+        "@type": "WebSite",
+        "@id": "https://mthree.biz/#website",
+        "url": "https://mthree.biz",
+        "name": "M3 Solutions",
+        "description": "Second Chance Rental Consulting — Austin, TX",
+        "publisher": { "@id": "https://mthree.biz/#business" },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://mthree.biz/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
         }
       }
     ]
-  }
-  </script>
-
-  <!-- Block 3: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://mthree.biz/#website",
-    "url": "https://mthree.biz",
-    "name": "M3 Solutions",
-    "description": "Second Chance Rental Consulting — Austin, TX",
-    "publisher": {
-      "@id": "https://mthree.biz/#business"
-    },
-    "inLanguage": "en-US"
   }
   </script>
 
@@ -2063,7 +2059,7 @@
       <h4>Contact</h4>
       <ul>
         <li><a href="#"><span class="__cf_email__" data-cfemail="5f363139301f326c2c30332a2b3630312c713c3032">[email&#160;protected]</span></a></li>
-        <li><a href="#">(555) 000-0000</a></li>
+        <li><a href="#">(833) 959-5093</a></li>
         <li><a href="#">Book a Call</a></li>
       </ul>
     </div>
