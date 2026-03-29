@@ -2261,8 +2261,11 @@
     closeCheckout();
   }
 
-  document.getElementById('checkoutModal').addEventListener('click', function(e) {
-    if (e.target === this) closeCheckout();
+  document.addEventListener('DOMContentLoaded', function() {
+    var cm = document.getElementById('checkoutModal');
+    if (cm) cm.addEventListener('click', function(e) { if (e.target === this) closeCheckout(); });
+    var im = document.getElementById('intakeModal');
+    if (im) im.addEventListener('click', function(e) { if (e.target === this) closeIntake(); });
   });
 
 
@@ -2354,9 +2357,7 @@
     document.getElementById('intakeModal').classList.remove('open');
     document.body.style.overflow = '';
   }
-  document.getElementById('intakeModal').addEventListener('click', function(e) {
-    if (e.target === this) closeIntake();
-  });
+  // intakeModal overlay click handled in DOMContentLoaded above
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeIntake();
   });
