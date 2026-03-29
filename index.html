@@ -891,6 +891,111 @@
       .modal-title { font-size: 1.4rem; }
     }
 
+
+    /* ── STRIPE CHECKOUT MODAL ── */
+    .checkout-overlay {
+      position: fixed; inset: 0; z-index: 1100;
+      background: rgba(7,17,28,0.88);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 1rem;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s;
+    }
+    .checkout-overlay.open { opacity: 1; pointer-events: all; }
+    .checkout-box {
+      background: #fff; border-radius: 16px;
+      width: 100%; max-width: 480px;
+      padding: 0;
+      transform: scale(0.95);
+      transition: transform 0.3s cubic-bezier(.22,.68,0,1.2);
+      box-shadow: 0 40px 80px rgba(7,17,28,0.5);
+      overflow: hidden;
+    }
+    .checkout-overlay.open .checkout-box { transform: scale(1); }
+    .checkout-box-header {
+      background: var(--navy);
+      padding: 1.6rem 2rem;
+      position: relative;
+    }
+    .checkout-box-close {
+      position: absolute; top: 1rem; right: 1rem;
+      background: rgba(255,255,255,0.1); border: none;
+      color: #fff; width: 28px; height: 28px; border-radius: 50%;
+      cursor: pointer; font-size: 0.9rem;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .checkout-box-close:hover { background: rgba(255,255,255,0.2); }
+    .checkout-box-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem;
+    }
+    .checkout-box-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 700; color: #fff;
+    }
+    .checkout-box-body { padding: 1.8rem 2rem; }
+    .checkout-price-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 0; border-bottom: 1px solid #f0f4f8;
+    }
+    .checkout-price-row:last-of-type { border-bottom: none; }
+    .checkout-item-name { font-size: 0.9rem; color: #4a5568; }
+    .checkout-item-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--navy);
+    }
+    .checkout-total {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 0 0;
+      border-top: 2px solid var(--navy);
+      margin-top: 0.5rem;
+    }
+    .checkout-total-label { font-weight: 700; font-size: 0.95rem; color: var(--navy); }
+    .checkout-total-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem; font-weight: 900; color: var(--gold);
+    }
+    .checkout-payment-note {
+      font-size: 0.78rem; color: #a0aec0; margin: 1rem 0 1.4rem;
+      line-height: 1.5;
+    }
+    .checkout-proceed {
+      width: 100%; padding: 1rem;
+      background: var(--gold); color: var(--navy);
+      border: none; border-radius: 8px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 700;
+      letter-spacing: 0.04em; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .checkout-proceed:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .checkout-stripe-badge {
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+      font-size: 0.75rem; color: #a0aec0; margin-top: 0.8rem;
+    }
+    .checkout-or {
+      text-align: center; font-size: 0.8rem; color: #a0aec0;
+      margin: 0.8rem 0; position: relative;
+    }
+    .checkout-or::before, .checkout-or::after {
+      content: ''; position: absolute; top: 50%;
+      width: 40%; height: 1px; background: #e2e8f0;
+    }
+    .checkout-or::before { left: 0; }
+    .checkout-or::after { right: 0; }
+    .checkout-intake-link {
+      width: 100%; padding: 0.8rem;
+      background: transparent; border: 1.5px solid #e2e8f0;
+      border-radius: 8px; color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem; font-weight: 600;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .checkout-intake-link:hover { border-color: var(--gold); color: var(--gold); }
+
   </style>
 </head>
 <body>
@@ -1201,7 +1306,7 @@
       <div style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--white);">Tradeline + Negative Removal — Both for $1,350</div>
       <div style="font-size:0.85rem; color:rgba(255,255,255,0.5); margin-top:0.3rem;">Save $150 when you combine both premium financial services</div>
     </div>
-    <a href="#contact" style="background:var(--gold); color:var(--navy); padding:0.8rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:700; letter-spacing:0.05em; text-decoration:none; white-space:nowrap;">Book Free Consultation</a>
+    <a href="#contact" style="background:var(--gold); color:var(--navy); padding:0.8rem 2rem; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:0.88rem; font-weight:700; letter-spacing:0.05em; text-decoration:none; white-space:nowrap;" onclick="stripeCheckout('https://buy.stripe.com/dRm8wOdnlfhl5AK7r83cc06'); return false;">Book Free Consultation</a>
   </div>
 </section>
 
@@ -1234,7 +1339,7 @@
         <li class="faded">Direct landlord outreach</li>
         <li class="faded">ChexSystems dispute help</li>
       </ul>
-      <button class="price-btn price-btn-outline">Get Started</button>
+      <button class="price-btn price-btn-outline" onclick="stripeCheckout('https://buy.stripe.com/eVq00idnl3yDbZ8dPw3cc00')">Get Started</button>
     </div>
 
     <!-- Fresh Start - FEATURED -->
@@ -1259,7 +1364,7 @@
         <li>1 follow-up call after placement</li>
         <li class="faded">Direct landlord negotiation</li>
       </ul>
-      <button class="price-btn price-btn-gold">Get Started</button>
+      <button class="price-btn price-btn-gold" onclick="stripeCheckout('https://buy.stripe.com/8x28wOdnl1qv6EO9zg3cc01')">Get Started</button>
     </div>
 
     <!-- M3 Advocate -->
@@ -1283,7 +1388,7 @@
         <li>2 follow-up coaching calls</li>
         <li class="faded">Dedicated assigned consultant</li>
       </ul>
-      <button class="price-btn price-btn-outline">Get Started</button>
+      <button class="price-btn price-btn-outline" onclick="stripeCheckout('https://buy.stripe.com/dRmbJ0ab96KP6EOh1I3cc02')">Get Started</button>
     </div>
 
     <!-- White Glove -->
@@ -1307,7 +1412,7 @@
         <li>4-hour guaranteed response time</li>
         <li>Nonprofit referral rate available</li>
       </ul>
-      <button class="price-btn price-btn-navy">Get Started</button>
+      <button class="price-btn price-btn-navy" onclick="stripeCheckout('https://buy.stripe.com/bJedR8erpedhfbk8vc3cc03')">Get Started</button>
     </div>
 
   </div>
@@ -1426,7 +1531,7 @@
   <p>Book a free, no-obligation consultation and let M3 Solutions show you what's possible.</p>
   <div class="cta-form">
     <input class="cta-input" type="email" placeholder="Enter your email address" />
-    <button class="cta-btn">Book Free Consultation</button>
+    <button class="cta-btn" onclick="stripeCheckout('STRIPE_CONSULTATION')">Book Free Consultation</button>
   </div>
 </section>
 
@@ -1588,6 +1693,79 @@
 </div>
 
 <script>
+
+  // ── Stripe Payment Links ─────────────────────────────────────
+  // Replace each STRIPE_XXXX with your actual Stripe Payment Link URL
+  const STRIPE_URLS = {
+    consultation:     'STRIPE_CONSULTATION',
+    open_doors:       'https://buy.stripe.com/eVq00idnl3yDbZ8dPw3cc00',
+    fresh_start:      'https://buy.stripe.com/8x28wOdnl1qv6EO9zg3cc01',
+    advocate:         'https://buy.stripe.com/dRmbJ0ab96KP6EOh1I3cc02',
+    white_glove:      'https://buy.stripe.com/bJedR8erpedhfbk8vc3cc03',
+    tradeline:        'https://buy.stripe.com/dRm7sK8310mr0gq4eW3cc04',
+    negative_removal: 'https://buy.stripe.com/cNi14m1ED2uzgfo8vc3cc05',
+    bundle:           'https://buy.stripe.com/dRm8wOdnlfhl5AK7r83cc06',
+  };
+
+  // Checkout modal state
+  let _currentStripeUrl = '';
+
+  const SERVICE_DETAILS = {
+    'STRIPE_CONSULTATION':     { name: 'Free Consultation',          price: 0,    label: 'Free 30-min intake call' },
+    'https://buy.stripe.com/eVq00idnl3yDbZ8dPw3cc00':       { name: 'Open Doors Package',         price: 149,  label: 'Starter — guidance & resources' },
+    'https://buy.stripe.com/8x28wOdnl1qv6EO9zg3cc01':      { name: 'Fresh Start Package',        price: 349,  label: 'Core — full application journey' },
+    'https://buy.stripe.com/dRmbJ0ab96KP6EOh1I3cc02':         { name: 'M3 Advocate Package',        price: 599,  label: 'Premium — hands-on representation' },
+    'https://buy.stripe.com/bJedR8erpedhfbk8vc3cc03':      { name: 'White Glove Package',        price: 999,  label: 'Concierge — done-for-you service' },
+    'https://buy.stripe.com/dRm7sK8310mr0gq4eW3cc04':        { name: 'Tradeline Service',          price: 750,  label: 'Credit profile boost — 30-45 days' },
+    'https://buy.stripe.com/cNi14m1ED2uzgfo8vc3cc05': { name: 'Negative Report Removal',    price: 750,  label: 'Dispute & remove negative items' },
+    'https://buy.stripe.com/dRm8wOdnlfhl5AK7r83cc06':           { name: 'Premium Bundle',             price: 1350, label: 'Tradeline + Negative Removal (save $150)' },
+  };
+
+  function stripeCheckout(url) {
+    // Find service detail by matching URL or placeholder key
+    let detail = null;
+    for (const [key, val] of Object.entries(SERVICE_DETAILS)) {
+      if (url === key || url === val) { detail = val; break; }
+    }
+    // If no real URL yet, find by placeholder key
+    if (!detail) {
+      detail = SERVICE_DETAILS[url] || { name: 'M3 Solutions Service', price: 0, label: '' };
+    }
+
+    _currentStripeUrl = url;
+
+    // Populate modal
+    document.getElementById('checkoutServiceName').textContent = detail.name;
+    document.getElementById('checkoutTotal').textContent = detail.price === 0 ? 'Free' : '$' + detail.price.toLocaleString();
+
+    const lineItems = detail.price === 0
+      ? `<div class="checkout-price-row"><span class="checkout-item-name">${detail.label}</span><span class="checkout-item-price" style="color:#48bb78;">Free</span></div>`
+      : `<div class="checkout-price-row"><span class="checkout-item-name">${detail.label}</span><span class="checkout-item-price">$${detail.price.toLocaleString()}</span></div>`;
+    document.getElementById('checkoutLineItems').innerHTML = lineItems;
+
+    document.getElementById('checkoutModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkoutModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function proceedToStripe() {
+    if (!_currentStripeUrl || _currentStripeUrl.startsWith('STRIPE_')) {
+      closeCheckout();
+      openIntake();
+      return;
+    }
+    window.open(_currentStripeUrl, '_blank');
+    closeCheckout();
+  }
+
+  document.getElementById('checkoutModal').addEventListener('click', function(e) {
+    if (e.target === this) closeCheckout();
+  });
+
   // ── FORMSPREE ENDPOINT — replace XXXXXXXX with your form ID ──
   const FORMSPREE_URL = 'https://formspree.io/f/mojpevvv';
 
@@ -1686,5 +1864,35 @@
     });
   }
 </script>
+
+<!-- STRIPE CHECKOUT CONFIRM MODAL -->
+<div class="checkout-overlay" id="checkoutModal">
+  <div class="checkout-box">
+    <div class="checkout-box-header">
+      <button class="checkout-box-close" onclick="closeCheckout()">✕</button>
+      <div class="checkout-box-label">Secure Checkout</div>
+      <div class="checkout-box-name" id="checkoutServiceName">M3 Solutions</div>
+    </div>
+    <div class="checkout-box-body">
+      <div id="checkoutLineItems"></div>
+      <div class="checkout-total">
+        <span class="checkout-total-label">Total Due Today</span>
+        <span class="checkout-total-price" id="checkoutTotal">$0</span>
+      </div>
+      <p class="checkout-payment-note">💳 Payment plans available — pay 50% now, 50% on placement. Contact us after checkout to set up a plan.</p>
+      <button class="checkout-proceed" id="checkoutBtn" onclick="proceedToStripe()">
+        <span>Pay Securely with Stripe</span>
+        <span style="font-size:1.1rem;">→</span>
+      </button>
+      <div class="checkout-stripe-badge">
+        🔒 Secured by Stripe · SSL Encrypted · No card data stored
+      </div>
+      <div class="checkout-or">or</div>
+      <button class="checkout-intake-link" onclick="closeCheckout(); openIntake();">
+        Start with a Free Consultation First
+      </button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
